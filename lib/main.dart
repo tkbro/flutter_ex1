@@ -13,8 +13,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     var materialApp = MaterialApp(
       title: "Flutter Demo",
-      // theme: ThemeData(
-      // ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
     return materialApp;
@@ -47,16 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children:[
           buildKakaoInvitePanel(),
         ],
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: IconButton(
-      //       icon: Image.asset('assets/images/ic_people.svg'),
-      //       iconSize: 50,
-      //       onPressed: () {},
-      //     ),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
+      )
     );
   }
 

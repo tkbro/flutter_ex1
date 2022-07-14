@@ -60,54 +60,51 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
-        shadowColor: null,
-        backgroundColor: null,
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Container(
-              decoration: const BoxDecoration(
-                color: Color.fromARGB(1, 255, 208, 90),
-              ),
-              margin: const EdgeInsets.all(20),
-              child: Center(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Column(
-                          children: const [
-                            Text('test'),
-                            Text('data'),
-                          ]
-                        ),
-                        Expanded(child: Container()),
-                        Image.asset('assets/images/ic_people.png', scale: 2.0,)
-                      ],
-                    )
-                  ]),
-              ) 
-            ),
-            Row(
-              children: [
-                Column(children: const [Text("카카오톡으로 초대하기"), Text("친구랑 정모 나가요 :D 레츠 기릿!")],),
-                Expanded(child: Container()),
-                SvgPicture.asset('assets/images/ic_people.svg', width: 140, height: 80,)
-              ],
-            )
-          ],
-        ),
+      body: Column(
+        children:[
+          buildKakaoInvitePanel(),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: IconButton(
-            icon: Image.asset('assets/images/ic_people.svg'),
-            iconSize: 50,
-            onPressed: () {},
-          ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: IconButton(
+      //       icon: Image.asset('assets/images/ic_people.svg'),
+      //       iconSize: 50,
+      //       onPressed: () {},
+      //     ),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget buildKakaoInvitePanel() {
+    return Container(
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(255, 208, 90, 1),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: const Color.fromRGBO(255, 208, 90, 1), width: 3)
+            ),
+            margin: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    SizedBox(width: 10,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text('카카오톡으로 초대하기', style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold), textAlign: TextAlign.start,),
+                        Text('친구랑 정모 나가요 :D 레츠 기릿!', style: TextStyle(color: Colors.black, fontSize: 12), textAlign: TextAlign.start)
+                      ]
+                    ),
+                    Expanded(child: Container()),
+                    Image.asset('assets/images/ic_people.png', scale: 2.0,)
+                  ],
+                )
+              ])
+          );
   }
 }

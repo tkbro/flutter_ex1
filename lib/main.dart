@@ -42,7 +42,26 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: buildAppBar(),
+      body: Column(
+        children:[
+          buildKakaoInvitePanel(),
+        ],
+      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: _incrementCounter,
+      //   tooltip: 'Increment',
+      //   child: IconButton(
+      //       icon: Image.asset('assets/images/ic_people.svg'),
+      //       iconSize: 50,
+      //       onPressed: () {},
+      //     ),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+  AppBar buildAppBar() {
+    return AppBar(
         title: Row(
           children: [
             const Text("더보기",
@@ -62,22 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         backgroundColor: Colors.white,
         elevation: 0,
-      ),
-      body: Column(
-        children:[
-          buildKakaoInvitePanel(),
-        ],
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: IconButton(
-      //       icon: Image.asset('assets/images/ic_people.svg'),
-      //       iconSize: 50,
-      //       onPressed: () {},
-      //     ),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      );
   }
 
   Widget buildKakaoInvitePanel() {
@@ -92,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Row(
                   children: [
-                    SizedBox(width: 10,),
+                    SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [

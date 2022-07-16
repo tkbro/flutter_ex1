@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
@@ -44,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Column(
         children:[
           buildKakaoInvitePanel(),
+          buildProfilePanel()
         ],
       )
     );
@@ -85,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Row(
                   children: [
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
@@ -99,5 +101,50 @@ class _MyHomePageState extends State<MyHomePage> {
                 )
               ])
           );
+  }
+
+  Widget buildProfilePanel() {
+    return Container(
+      margin: const EdgeInsets.all(20),
+      child: Row(
+        children: [
+          SvgPicture.asset('assets/images/Ellipse 5.svg', width: 80, height: 80,),
+          Column(
+            children: [
+              Container(
+                margin: const EdgeInsets.only(left: 10),
+                height: 40,
+                child: Row(
+                  children: const [
+                    Text('홍길동', style: TextStyle(color: Colors.black, fontSize: 15, fontWeight: FontWeight.bold), textAlign: TextAlign.start),
+                    SizedBox(width: 5),
+                    Text('1900.1.23', style: TextStyle(color: Colors.grey, fontSize: 9, fontWeight: FontWeight.w300),)
+                  ])
+              ),
+              Container(
+                height: 40,
+                alignment: Alignment.topLeft,
+                child: Row(
+                  children: [
+                    SvgPicture.asset('assets/images/ic_point.svg', width: 10, height: 20,),
+                    const SizedBox(width: 3,),
+                    const Text('경기도'),
+                    const SizedBox(width: 12)
+                  ]),
+              )
+            ],
+          ),
+          Expanded(child: Container()),
+          Column(children: [
+            Container(
+              margin: const EdgeInsets.only(right: 5),
+              alignment: Alignment.center,
+              height: 40, 
+              child: const Text('수정', style: TextStyle(fontSize: 15, decoration: TextDecoration.underline))
+            ),
+            const SizedBox(height: 40)
+          ])
+        ]),
+    );
   }
 }

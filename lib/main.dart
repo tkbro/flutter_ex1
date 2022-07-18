@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -30,6 +31,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  int _selectedIndex = 0;
+  Color _bannerColor = Color.fromRGBO(255, 208, 90, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +40,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: buildAppBar(),
       body: Column(
         children:[
-          buildKakaoInvitePanel(),
+          GestureDetector(
+            child: buildKakaoInvitePanel(),
+            onTap: () => {
+              setState(() {
+                _bannerColor = getRandomColor();
+              })
+            },
+          ),
+          // buildKakaoInvitePanel(),
           buildProfilePanel()
         ],
-      )
+      ),
+      bottomNavigationBar: buildBottomNavigationBar(_selectedIndex),
     );
   }
 
@@ -71,9 +83,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget buildKakaoInvitePanel() {
     return Container(
             decoration: BoxDecoration(
-              color: const Color.fromRGBO(255, 208, 90, 1),
+              color: _bannerColor,
               borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: const Color.fromRGBO(255, 208, 90, 1), width: 3)
+              border: Border.all(color: _bannerColor, width: 3)
             ),
             margin: const EdgeInsets.all(20),
             child: Column(
@@ -103,9 +115,12 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           SvgPicture.asset('assets/images/Ellipse 5.svg', width: 80, height: 80,),
           Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: const EdgeInsets.only(left: 10),
+                padding: const EdgeInsets.only(left: 10),
+                // margin: const EdgeInsets.only(left: 10),
                 height: 40,
                 child: Row(
                   children: const [
@@ -115,14 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   ])
               ),
               Container(
+                padding: const EdgeInsets.only(left: 10),
                 height: 40,
                 alignment: Alignment.topLeft,
                 child: Row(
                   children: [
                     SvgPicture.asset('assets/images/ic_point.svg', width: 10, height: 20,),
                     const SizedBox(width: 3,),
-                    const Text('경기도'),
-                    const SizedBox(width: 12)
+                    const Text('경기도')
                   ]),
               )
             ],
@@ -139,5 +154,44 @@ class _MyHomePageState extends State<MyHomePage> {
           ])
         ]),
     );
+  }
+
+  BottomNavigationBar buildBottomNavigationBar(int index) {
+    return BottomNavigationBar(
+      unselectedItemColor: Colors.black,
+      selectedItemColor: Colors.black54,
+      showUnselectedLabels: true,
+      // fixedColor: Colors.white,
+      items: <BottomNavigationBarItem> [
+        BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_class.svg', 16, 17), label: '클래스'),
+        BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_search.svg', 16, 16), label: '소모임'),
+        BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_message.svg', 22, 16), label: '내모임'),
+        BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_more.svg', 14, 2), label: '더보기'),
+      ],
+      currentIndex: index,
+      // selectedItemColor: Colors.amber,
+      onTap: _onItemTapped,
+    );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  Widget buildPadding3SvgPicture(String path, double width, double height) {
+    return Container(
+      margin: const EdgeInsets.all(3),
+      child: SvgPicture.asset(path, width: width, height: height),
+    );
+  }
+
+  Color getRandomColor() {
+    var random = Random();
+    int r = random.nextInt(255);
+    int g = random.nextInt(255);
+    int b = random.nextInt(255);
+    return Color.fromRGBO(r, g, b, 1);
   }
 }

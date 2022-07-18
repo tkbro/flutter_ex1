@@ -49,7 +49,8 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           // buildKakaoInvitePanel(),
-          buildProfilePanel()
+          buildProfilePanel(),
+          buildMyFavorPanel()
         ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(_selectedIndex),
@@ -153,6 +154,61 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 40)
           ])
         ]),
+    );
+  }
+
+  Widget buildMyFavorPanel() {
+    return Container(
+      height: 50,
+      margin: const EdgeInsets.symmetric(horizontal: 10),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            // margin: : ,
+          ),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              maxWidth: MediaQuery.of(context).size.width * 0.8 
+            ),
+            child: Flexible(
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.horizontal,
+                itemCount: 20,
+                itemBuilder: (context, index) {
+                  var path = '';
+                  if (index % 3 == 0) {
+                    path = 'assets/images/ic_exercise.png';
+                  } else if (index % 3 == 1) {
+                    path = 'assets/images/ic_backpack.png';
+                  } else {
+                    path = 'assets/images/ic_cup.png';
+                  }
+                  
+                  return Container(margin: const EdgeInsets.only(left: 5), child: Image.asset(path, scale: 2.0));
+                }),
+              )
+          ),
+            // )
+            // ListView(
+            //   scrollDirection: Axis.horizontal,
+            //   children: <Widget>[
+            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_backpack.png', scale: 2.0)),
+            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_cup.png', scale: 2.0)),
+            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_exercise.png', scale: 2.0)),
+            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_backpack.png', scale: 2.0)),
+            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_cup.png', scale: 2.0)),
+            //   ],
+            // ),
+          Expanded(
+            // alignment: Alignment.center,
+            child: Container(
+              alignment: Alignment.center, 
+              child: Text("편집", style: TextStyle(fontSize: 15, decoration: TextDecoration.underline))
+            )
+          )
+        ])
     );
   }
 

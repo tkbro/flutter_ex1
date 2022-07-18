@@ -48,7 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
               })
             },
           ),
-          // buildKakaoInvitePanel(),
           buildProfilePanel(),
           buildMyFavorPanel()
         ],
@@ -164,9 +163,6 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Container(
-            // margin: : ,
-          ),
           ConstrainedBox(
             constraints: BoxConstraints(
               maxWidth: MediaQuery.of(context).size.width * 0.8 
@@ -190,19 +186,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 }),
               )
           ),
-            // )
-            // ListView(
-            //   scrollDirection: Axis.horizontal,
-            //   children: <Widget>[
-            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_backpack.png', scale: 2.0)),
-            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_cup.png', scale: 2.0)),
-            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_exercise.png', scale: 2.0)),
-            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_backpack.png', scale: 2.0)),
-            //     Container(margin: const EdgeInsets.only(left: 5), child: Image.asset('assets/images/ic_cup.png', scale: 2.0)),
-            //   ],
-            // ),
           Expanded(
-            // alignment: Alignment.center,
             child: Container(
               alignment: Alignment.center, 
               child: Text("편집", style: TextStyle(fontSize: 15, decoration: TextDecoration.underline))
@@ -217,7 +201,6 @@ class _MyHomePageState extends State<MyHomePage> {
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.black54,
       showUnselectedLabels: true,
-      // fixedColor: Colors.white,
       items: <BottomNavigationBarItem> [
         BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_class.svg', 16, 17), label: '클래스'),
         BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_search.svg', 16, 16), label: '소모임'),
@@ -225,7 +208,6 @@ class _MyHomePageState extends State<MyHomePage> {
         BottomNavigationBarItem(icon: buildPadding3SvgPicture('assets/images/ic_more.svg', 14, 2), label: '더보기'),
       ],
       currentIndex: index,
-      // selectedItemColor: Colors.amber,
       onTap: _onItemTapped,
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ex1/MyMoim.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'dart:math';
 
@@ -244,6 +245,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      Navigator.push(context, MaterialPageRoute(builder: (context) => MyMoimPage()));
     });
   }
 

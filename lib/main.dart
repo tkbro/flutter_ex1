@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ex1/page/MyMoim.dart';
 import 'package:flutter_ex1/page/Setting.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math';
 
 void main() {
   runApp(const MyApp());

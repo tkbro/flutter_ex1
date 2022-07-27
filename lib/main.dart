@@ -32,6 +32,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   Color _bannerColor = Color.fromRGBO(255, 208, 90, 1);
+  final List<String> _menuStringList = const [
+    '내 찜 모임',
+    '최근 본 모임',
+    '프리미엄 모임',
+    '클래스 만들기',
+    '파워 유저'];
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
             },
           ),
           buildProfilePanel(),
-          buildMyFavorPanel()
+          buildMyFavorPanel(),
+          buildMenuListPanel(),
         ],
       ),
       bottomNavigationBar: buildBottomNavigationBar(_selectedIndex),
@@ -192,6 +199,29 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           )
         ])
+    );
+  }
+
+  Widget buildMenuListPanel() {
+    return Flexible(
+      child: Container(
+        margin: const EdgeInsets.all(5),
+        child: ListView.builder(
+          shrinkWrap: true,
+          itemCount: _menuStringList.length,
+          itemBuilder: ((context, index) {
+            return Column(
+              children: [
+                ListTile(
+                  title: Text(_menuStringList[index], style: const TextStyle(fontSize: 20)),
+                  trailing: SvgPicture.asset('assets/images/ic_right_arrow.svg', width: 7, height: 12),
+                ),
+                const Divider(indent: 10, endIndent: 10,)
+              ]
+            );
+          }),
+        ),
+      ),
     );
   }
 
